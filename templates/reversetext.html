@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <h2 class="form-title">Reverse Text</h2>
+        <p>
+            Enter some text below and click submit to reverse it.
+        </p>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <textarea name="toolbox" class="toolbox" cols="120" rows="15">{{ form.message.data }}</textarea>
+            <br>
+            <button class="form-bottom-button" type="submit">SUBMIT</button>
+            <button class="form-bottom-button" type="button" onclick="clipboardCopy()">COPY TO CLIPBOARD</button>
+        </form>
+    </div>
+{% endblock %}

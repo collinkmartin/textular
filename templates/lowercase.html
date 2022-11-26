@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <h2 class="form-title">Lowercase Text</h2>
+        <p>
+            Enter some text below and click submit to make text lowercase:
+        </p>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <textarea name="toolbox" class="toolbox" id="tocopy" cols="120" rows="15">{{ form.message.data }}</textarea>
+            <br>
+            <button class="form-bottom-button" type="submit">SUBMIT</button>
+            <button class="form-bottom-button" type="button" onclick="clipboardCopy()">COPY TO CLIPBOARD</button>
+        </form>
+        <h2 class="form-title"> Lower Case Converter </h2>
+        <p>
+            You can paste text in the tool above to turn uppercase words into lower case words. It will convert all
+            capital letters into lowercase. Here is an example:
+        </p>
+        <p><b>Example 1:</b></p>
+        <p>
+            CHANGE UPPERCASE TO LOWERCASE WORD ----> change uppercase to lowercase word
+        </p>
+        <p><b>Example 2:</b></p>
+        <p>
+            CoNvErT CaPs tO lOwErCaSe ----> convert caps to lowercase
+        </p>
+    </div>
+{% endblock %}
