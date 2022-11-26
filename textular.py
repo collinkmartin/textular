@@ -25,18 +25,27 @@ def tools():
 
 # Tools Routing
 
+'''
+    I use sessions to store text for manipulation on the backend. This 
+    allowed me to keep the project simple; no need for a database.
+'''
 @app.route('/tools/reversetext', methods=['GET', 'POST'])
 def reverseText():
     sessionData = ''
+    # If request method is POST, this means the user submitted the form.
+    # Pull the form data from the request and store it in a session
     if request.method == 'POST':
         session['words'] = request.form['toolbox']
         return redirect(url_for('reverseText'))
     else:
+        # If the specific session we create exists (after a user submits a form)
+        # We manipulate the data and clear the session (in case they want to submit again)
         form = ToolForm()
         if 'words' in session:
             form.message.data = reverse(session['words'])
             session.clear()
             return render_template('reversetext.html', form=form)
+        # User's first time getting form.
         else:
             form.message.data = 'Enter your text here!'
         return render_template('reversetext.html', form=form)
